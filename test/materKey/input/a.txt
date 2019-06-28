@@ -1,0 +1,11 @@
+aa 10
+aa 70
+aa 50
+aa 30
+aa 40
+aa 40
+bb 20
+bb 80
+bb 100
+cc 90
+cc 60

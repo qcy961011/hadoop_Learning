@@ -1,0 +1,31 @@
+{
+	"type": "record",
+	"name": "user_0415_avro",
+	"namespace": "com.qiao",
+	"fields": [{
+			"name": "aid",
+			"type": "string",
+			"default": "null"
+		}, {
+			"name": "pkgname",
+			"type": "string",
+			"default": "null"
+		}, {
+			"name": "uptime",
+			"type": "long",
+			"default": -1
+		}, {
+			"name": "type",
+			"type": "string",
+			"default": "null"
+		}, {
+			"name": "country",
+			"type": "string",
+            "default": "null"
+		}, {
+         	"name": "gpcategory",
+         	"type": "string",
+         	"default": "null"
+         }
+	]
+}

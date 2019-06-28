@@ -1,0 +1,61 @@
+<configuration>
+	<!-- 数据库 start -->
+	<property>
+	  <name>javax.jdo.option.ConnectionURL</name>
+	  <value>jdbc:mysql://192.168.92.120:3306/hive_meta?createDatabaseIfNotExist=true</value>
+	  <description>mysql连接</description>
+	</property>
+
+	<property>
+	  <name>javax.jdo.option.ConnectionDriverName</name>
+	  <value>com.mysql.jdbc.Driver</value>
+	  <description>mysql驱动</description>
+	</property>
+
+	<property>
+	  <name>javax.jdo.option.ConnectionUserName</name>
+	  <value>root</value>
+	  <description>数据库使用用户名</description>
+	</property>
+
+	<property>
+	  <name>javax.jdo.option.ConnectionPassword</name>
+	  <value>123456</value>
+	  <description>数据库密码</description>
+	</property>
+	<!-- 数据库 end -->
+	<!-- HDFS start -->
+	<property> 
+	  <name>hive.metastore.warehouse.dir</name>
+	  <value>/project/hadoop_Learning/hive/warehouse</value>
+	  <description>hive使用的HDFS目录</description>
+	</property>
+
+	<!--<property>-->
+		<!--<name>hive.exec.scratchdir </name>-->
+		<!--<value>/project/hadoop_Learning/hive/warehouse</value>-->
+		<!--<description>HDFS路径，用于存储不同 map/reduce 阶段的执行计划和这些阶段的中间输出结果。</description>-->
+	<!--</property>-->
+	<!-- HDFS end -->
+	<!-- 其它 start -->
+	<property>
+	  <name>datanucleus.autoCreateSchema</name>
+	  <value>false</value>
+	</property>
+
+	<property>
+	  <name>datanucleus.fixedDatastore</name>
+	  <value>true</value>
+	</property>
+
+	<property>
+	  <name>datanucleus.autoStartMechanism</name> 
+	  <value>SchemaTable</value>
+	</property>
+
+	<property> 
+	  <name>hive.cli.print.current.db</name>
+	  <value>true</value>
+	</property>
+	<!-- 其它 end -->
+</configuration>
