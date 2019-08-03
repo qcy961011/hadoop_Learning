@@ -30,7 +30,7 @@ public class RandomTestFile {
         int count = 0 ;
         for (int i = 0; i < 10; i++) {
             Thread thread = new Thread(() -> {
-                for (int j = 0; j < 600000; j++) {
+                for (int j = 0; j < 6000000; j++) {
                     stringBuffer.append(lib[random.nextInt(9)]);
                     if (j % 100 == 0) {
                         stringBuffer.append("\n");

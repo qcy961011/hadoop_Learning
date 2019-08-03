@@ -6,7 +6,6 @@
         <name>hbase.master</name>
         <value>nn1.hadoop:60000</value>
     </property>
-
     <!--	Client参数	-->
     <property>
         <name>hbase.client.scanner.caching</name>

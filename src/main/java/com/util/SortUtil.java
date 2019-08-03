@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 用于排序的工具类
  *
- * @author xiaoshuai
+ * @author Qiao
  *
  */
 public class SortUtil {
