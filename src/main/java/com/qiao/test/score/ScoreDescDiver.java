@@ -40,6 +40,9 @@ public class ScoreDescDiver {
         }
     }
 
+    /**
+     * 手动设置分区方式
+     */
     private static class ScoreDescPartitioner extends Partitioner<LongWritable,Text> {
         @Override
         public int getPartition(LongWritable longWritable, Text text, int numPartitions) {
@@ -51,6 +54,9 @@ public class ScoreDescDiver {
         }
     }
 
+    /**
+     * 手动设置排序方式
+     */
     private static class ScoreDescComparator extends WritableComparator {
 
         public ScoreDescComparator() {
@@ -74,6 +80,7 @@ public class ScoreDescDiver {
         job.setJarByClass(ScoreDescDiver.class);
         job.setMapperClass(ScoreDescMapper.class);
         job.setReducerClass(ScoreDescReducer.class);
+
         job.setSortComparatorClass(ScoreDescComparator.class);
         job.setPartitionerClass(ScoreDescPartitioner.class);
 
