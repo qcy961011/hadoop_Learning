@@ -16,7 +16,7 @@ public class AddTwoNumbers {
         addTwoNumbers(listnode_2 , listnode_5);
     }
 
-    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    private static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode preNode = new ListNode(0);
         ListNode curr = preNode;
         int carry = 0;
