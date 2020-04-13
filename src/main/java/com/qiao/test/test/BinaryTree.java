@@ -92,31 +92,37 @@ class BinarySortTree<E extends Comparable<E>> {
      */
     public void preOrderTraverse(Node<E> node) {
         System.out.print(node.value + " ");
-        if (node.left != null)
+        if (node.left != null) {
             preOrderTraverse(node.left);
-        if (node.right != null)
+        }
+        if (node.right != null) {
             preOrderTraverse(node.right);
+        }
     }
     /**
      * 中序遍历二叉树（递归）
      * @param node
      */
     public void inOrderTraverse(Node<E> node) {
-        if (node.left != null)
+        if (node.left != null) {
             inOrderTraverse(node.left);
+        }
         System.out.print(node.value + " ");
-        if (node.right != null)
+        if (node.right != null) {
             inOrderTraverse(node.right);
+        }
     }
     /**
      * 后序遍历二叉树（递归）
      * @param node
      */
     public void postOrderTraverse(Node<E> node) {
-        if (node.left != null)
+        if (node.left != null) {
             postOrderTraverse(node.left);
-        if (node.right != null)
+        }
+        if (node.right != null) {
             postOrderTraverse(node.right);
+        }
         System.out.print(node.value + " ");
     }
     /**
@@ -130,10 +136,12 @@ class BinarySortTree<E extends Comparable<E>> {
         while (!stack.isEmpty()) {
             currentNode = stack.pop();
             System.out.print(currentNode.value + " ");
-            if (currentNode.right != null)
+            if (currentNode.right != null) {
                 stack.push(currentNode.right);
-            if (currentNode.left != null)
+            }
+            if (currentNode.left != null) {
                 stack.push(currentNode.left);
+            }
         }
     }
     /**
@@ -193,10 +201,12 @@ class BinarySortTree<E extends Comparable<E>> {
         while (!queue.isEmpty()) {
             currentNode = queue.poll();
             System.out.print(currentNode.value + " ");
-            if (currentNode.left != null)
+            if (currentNode.left != null) {
                 queue.offer(currentNode.left);
-            if (currentNode.right != null)
+            }
+            if (currentNode.right != null) {
                 queue.offer(currentNode.right);
+            }
         }
     }
 }

@@ -23,8 +23,9 @@ public class TwoNumberSum {
             map.put(arr[i], i);
         }
         for (int i = 0; i < arr.length; i++) {
-            if (map.containsKey(targe - arr[i]))
+            if (map.containsKey(targe - arr[i])) {
                 res[0] = i;
+            }
             res[1] = map.get(targe - arr[i]);
             return res;
         }

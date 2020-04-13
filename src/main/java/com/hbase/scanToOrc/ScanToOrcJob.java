@@ -16,7 +16,7 @@ public class ScanToOrcJob extends Configured implements Tool {
         JobControl jobControl = new JobControl("OrcToText");
 
         ScanToOrc orc = new ScanToOrc();
-        orc.setConf(configuration);
+        ScanToOrc.setConf(configuration);
         ControlledJob controlledJob = orc.getControlledJob();
         jobControl.addJob(controlledJob);
         JobRunResult result = JobRunUtil.run(jobControl);

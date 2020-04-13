@@ -38,8 +38,12 @@ public class Test {
                 arr[start] = tem;
             }
         }
-        if(start > low) sort(arr , low , start -1);
-        if(end < high) sort(arr , end + 1 , high);
+        if(start > low) {
+            sort(arr , low , start -1);
+        }
+        if(end < high) {
+            sort(arr , end + 1 , high);
+        }
     }
 
 }

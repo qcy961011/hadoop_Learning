@@ -22,7 +22,9 @@ public class SlidingWindowMaximum {
      */
     public static int[] maxSlidingWindowViolence(int[] nums, int k) {
         int n = nums.length;
-        if (n * k == 0) return new int[0];
+        if (n * k == 0) {
+            return new int[0];
+        }
 
         int[] output = new int[n - k + 1];
         for (int i = 0; i < n - k + 1; i++) {
@@ -48,7 +50,9 @@ public class SlidingWindowMaximum {
 
     public static int[] maxSlidingWindowMaxProQueue(int[] nums, int k) {
         int n = nums.length;
-        if (n * k == 0) return new int[0];
+        if (n * k == 0) {
+            return new int[0];
+        }
 
         int[] output = new int[n - k + 1];
         for (int i = 0; i < n - k + 1; i++) {
@@ -69,8 +73,9 @@ public class SlidingWindowMaximum {
     public static void clean_deque(int i, int k, int[] nums) {
         // remove indexes of elements not from sliding window
         // 删除下标不在滑动窗口中的元素
-        if (!deq.isEmpty() && deq.getFirst() == i - k)
+        if (!deq.isEmpty() && deq.getFirst() == i - k) {
             deq.removeFirst();
+        }
 
         // remove from deq indexes of all elements
         // which are smaller than current element nums[i]
@@ -82,8 +87,12 @@ public class SlidingWindowMaximum {
 
     public static int[] maxSlidingWindowDeq(int[] nums, int k) {
         int n = nums.length;
-        if (n * k == 0) return new int[0];
-        if (k == 1) return nums;
+        if (n * k == 0) {
+            return new int[0];
+        }
+        if (k == 1) {
+            return nums;
+        }
 
         // init deque and output
         int max_idx = 0;
@@ -91,7 +100,9 @@ public class SlidingWindowMaximum {
             clean_deque(i, k, nums);
             deq.addLast(i);
             // compute max in nums[:k]
-            if (nums[i] > nums[max_idx]) max_idx = i;
+            if (nums[i] > nums[max_idx]) {
+                max_idx = i;
+            }
         }
         int[] output = new int[n - k + 1];
         output[0] = nums[max_idx];

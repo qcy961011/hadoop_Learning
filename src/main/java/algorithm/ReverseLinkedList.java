@@ -24,14 +24,14 @@ public class ReverseLinkedList {
             prev = curr;
             // 4. 将下一个执行节点改完next
             curr = next;
-    }
+        }
         return prev;
     }
 
 
     static class ListNode {
-        int val;
-        ListNode next;
+        private int val;
+        private ListNode next;
 
         ListNode(int x) {
             val = x;

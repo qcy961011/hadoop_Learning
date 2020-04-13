@@ -106,6 +106,7 @@ public class WordCountWithCompress extends Configured implements Tool{
 		
 	}
 
+	@Override
 	public int run(String[] args) throws Exception {
 		// 获取configuration对象
 		Configuration conf = getConf();

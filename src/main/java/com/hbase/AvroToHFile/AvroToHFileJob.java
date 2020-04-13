@@ -20,7 +20,7 @@ public class AvroToHFileJob extends Configured implements Tool {
         JobControl jobControl = new JobControl("AvroToHFileJob");
 
         AvroToHFile avro = new  AvroToHFile();
-        avro.setConf(configuration);
+        AvroToHFile.setConf(configuration);
 
         ControlledJob avroContrJob = avro.getControlledJob();
 

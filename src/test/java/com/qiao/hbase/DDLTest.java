@@ -32,12 +32,12 @@ public class DDLTest {
      */
     @Test
     public void createTable() {
-        try(
+        try (
                 Connection connection = ConnectionFactory.createConnection(configuration);
                 Admin admin = connection.getAdmin();
-                ) {
-            if(admin.tableExists(tableName)){
-                System.out.println("table " + tableName.toString() + " is exists!") ;
+        ) {
+            if (admin.tableExists(tableName)) {
+                System.out.println("table " + tableName.toString() + " is exists!");
                 return;
             }
             HTableDescriptor decs = new HTableDescriptor(tableName);
@@ -54,15 +54,15 @@ public class DDLTest {
     }
 
     /**
-     *  删除table
+     * 删除table
      */
 //    @Test
     public void deleteTable() {
-        try(
+        try (
                 Connection connection = ConnectionFactory.createConnection(configuration);
                 Admin admin = connection.getAdmin()
         ) {
-            if(admin.tableExists(tableName)){
+            if (admin.tableExists(tableName)) {
                 admin.disableTable(tableName);
                 admin.deleteTable(tableName);
                 System.out.println("delete table seccesssed");
@@ -80,13 +80,13 @@ public class DDLTest {
      */
 //    @Test
     public void alterAddTable() {
-        try(
+        try (
                 Connection connection = ConnectionFactory.createConnection(configuration);
                 Admin admin = connection.getAdmin()
         ) {
-            if(admin.tableExists(tableName)){
+            if (admin.tableExists(tableName)) {
                 HColumnDescriptor hColumnDescriptor = new HColumnDescriptor(Bytes.toBytes("c_d"));
-                admin.addColumn(tableName , hColumnDescriptor);
+                admin.addColumn(tableName, hColumnDescriptor);
                 System.out.println("alter table seccesssed");
                 return;
             } else {
@@ -102,12 +102,12 @@ public class DDLTest {
      */
 //    @Test
     public void alterDeleteTable() {
-        try(
+        try (
                 Connection connection = ConnectionFactory.createConnection(configuration);
                 Admin admin = connection.getAdmin()
         ) {
-            if(admin.tableExists(tableName)){
-                admin.deleteColumn(tableName ,Bytes.toBytes("c_d") );
+            if (admin.tableExists(tableName)) {
+                admin.deleteColumn(tableName, Bytes.toBytes("c_d"));
                 System.out.println("alter table seccesssed");
                 return;
             } else {
@@ -122,16 +122,16 @@ public class DDLTest {
      * 增加数据
      */
     public void putData() {
-        try(
+        try (
                 Connection connection = ConnectionFactory.createConnection(configuration);
                 HTable table = (HTable) connection.getTable(tableName);
                 Admin admin = connection.getAdmin()
         ) {
-            if(admin.tableExists(tableName)){
+            if (admin.tableExists(tableName)) {
                 Put putApi01 = new Put(Bytes.toBytes("Api01"));
                 Put putApi02 = new Put(Bytes.toBytes("Api02"));
-                putApi01.addColumn(getByte("c_a") , getByte("name") , getByte("qiaoTest"));
-                putApi02.addColumn(getByte("c_a") , getByte("name") , getByte("yangTest"));
+                putApi01.addColumn(getByte("c_a"), getByte("name"), getByte("qiaoTest"));
+                putApi02.addColumn(getByte("c_a"), getByte("name"), getByte("yangTest"));
                 List list = new ArrayList();
                 list.add(putApi01);
                 list.add(putApi02);
@@ -150,14 +150,14 @@ public class DDLTest {
      * 获取一条数据
      */
     public void getData() {
-        try(
+        try (
                 Connection connection = ConnectionFactory.createConnection(configuration);
                 HTable table = (HTable) connection.getTable(tableName);
                 Admin admin = connection.getAdmin()
         ) {
-            if(admin.tableExists(tableName)){
+            if (admin.tableExists(tableName)) {
                 Get get = new Get(getByte("Api01"));
-                get.addColumn(getByte("c_a") , getByte("name"));
+                get.addColumn(getByte("c_a"), getByte("name"));
                 get.setTimeStamp(1554994937878L);
                 Result result = table.get(get);
 
@@ -176,13 +176,13 @@ public class DDLTest {
      * 查询全表（加查询条件）
      */
     @Test
-    public void scanTable(){
-        try(
+    public void scanTable() {
+        try (
                 Connection connection = ConnectionFactory.createConnection(configuration);
                 HTable table = (HTable) connection.getTable(tableName);
                 Admin admin = connection.getAdmin()
         ) {
-            if(admin.tableExists(tableName)){
+            if (admin.tableExists(tableName)) {
                 Scan scan = new Scan();
 
                 // 设置查询条件 包含start  不包含stop
@@ -192,8 +192,8 @@ public class DDLTest {
                 // 设置查询数据版本数量
                 scan.setMaxVersions(1);
                 ResultScanner scanner = table.getScanner(scan);
-                for (Result r:
-                     scanner) {
+                for (Result r :
+                        scanner) {
                     printRowData(r);
                 }
                 System.out.println("scan table seccesssed");
@@ -211,12 +211,12 @@ public class DDLTest {
      */
     @Test
     public void deleteRow() {
-        try(
+        try (
                 Connection connection = ConnectionFactory.createConnection(configuration);
                 HTable table = (HTable) connection.getTable(tableName);
                 Admin admin = connection.getAdmin()
         ) {
-            if(admin.tableExists(tableName)){
+            if (admin.tableExists(tableName)) {
                 Delete delete = new Delete(getByte("id03"));
                 table.delete(delete);
                 System.out.println("delete row seccesssed");
@@ -233,15 +233,15 @@ public class DDLTest {
      * 删除某个列数据
      */
     @Test
-    public void deleteColumn(){
-        try(
+    public void deleteColumn() {
+        try (
                 Connection connection = ConnectionFactory.createConnection(configuration);
                 HTable table = (HTable) connection.getTable(tableName);
                 Admin admin = connection.getAdmin()
         ) {
-            if(admin.tableExists(tableName)){
+            if (admin.tableExists(tableName)) {
                 Delete delete = new Delete(getByte("id02"));
-                delete.addColumn(getByte("c_a") , getByte("name"));
+                delete.addColumn(getByte("c_a"), getByte("name"));
                 table.delete(delete);
                 System.out.println("delete Column seccesssed");
                 return;
@@ -258,12 +258,12 @@ public class DDLTest {
      */
     @Test
     public void scanTableByCompar() {
-        try(
+        try (
                 Connection connection = ConnectionFactory.createConnection(configuration);
                 HTable table = (HTable) connection.getTable(tableName);
                 Admin admin = connection.getAdmin()
         ) {
-            if(admin.tableExists(tableName)){
+            if (admin.tableExists(tableName)) {
                 Scan scan = new Scan();
                 SingleColumnValueFilter filter = null;
 //                filter = getFileterByBinaryCompartator();
@@ -272,7 +272,7 @@ public class DDLTest {
                 scan.setFilter(filter);
                 scan.setMaxVersions(1);
                 ResultScanner scanner = table.getScanner(scan);
-                for (Result r:
+                for (Result r :
                         scanner) {
                     printRowData(r);
                 }
@@ -288,7 +288,7 @@ public class DDLTest {
     /**
      * 使用二进制比较
      */
-    public SingleColumnValueFilter getFileterByBinaryCompartator(){
+    public SingleColumnValueFilter getFileterByBinaryCompartator() {
         BinaryComparator comparator = new BinaryComparator(getByte("qiaochunyu"));
         SingleColumnValueFilter filter = new SingleColumnValueFilter(getByte("c_a"), getByte("name"), CompareOp.EQUAL, comparator);
         filter.setFilterIfMissing(true);
@@ -301,25 +301,26 @@ public class DDLTest {
      */
     public SingleColumnValueFilter getFileterByRegexStringComparator() {
         RegexStringComparator comparator = new RegexStringComparator("^yang");
-        SingleColumnValueFilter filter = new SingleColumnValueFilter(getByte("c_a") , getByte("name") , CompareOp.EQUAL , comparator);
+        SingleColumnValueFilter filter = new SingleColumnValueFilter(getByte("c_a"), getByte("name"), CompareOp.EQUAL, comparator);
         return filter;
     }
 
     /**
      * 字符串包含
+     *
      * @return
      */
     public SingleColumnValueFilter getFileterBySubstringComparator() {
         SubstringComparator comparator = new SubstringComparator("boy");
-        SingleColumnValueFilter filter = new SingleColumnValueFilter(getByte("c_a") , getByte("sex") , CompareOp.EQUAL , comparator);
+        SingleColumnValueFilter filter = new SingleColumnValueFilter(getByte("c_a"), getByte("sex"), CompareOp.EQUAL, comparator);
         return filter;
     }
 
     private static void printRowData(Result result) {
         Cell[] cells = result.rawCells();
         StringBuffer stringBuffer = new StringBuffer();
-        for (Cell cell:
-             cells) {
+        for (Cell cell :
+                cells) {
             String rowkey = Bytes.toString(CellUtil.cloneRow(cell));
             String cf = Bytes.toString(CellUtil.cloneFamily(cell));
             String colum = Bytes.toString(CellUtil.cloneQualifier(cell));
